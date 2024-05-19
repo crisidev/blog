@@ -1,0 +1,13 @@
+name: Publish to https://lmno.lol/crisidev
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run_script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Publish blog
+        run: ./scripts/deploy.sh
