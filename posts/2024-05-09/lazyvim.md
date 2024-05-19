@@ -44,7 +44,13 @@ On top of this, it's less code to maintain 🤩. It's still a lot, but what the 
 ===============================================================================
 ```
 
-And the look and feel is GREAT!
+**The look and feel is GREAT!**
+
+[Alpha](), the startup / welcome dashboard with recent files, quick actions and sessions and a cool banner 🤩
+
+[![alpha](https://raw.githubusercontent.com/crisidev/blog/main/posts/2024-05-09/alpha.png)](https://raw.githubusercontent.com/crisidev/blog/main/posts/2024-05-09/alpha.png)
+
+Developing in Rust with files and tests panels and LSP completion
 
 [![rust](https://raw.githubusercontent.com/crisidev/blog/main/posts/2024-05-09/rust.png)](https://raw.githubusercontent.com/crisidev/blog/main/posts/2024-05-09/rust.png)
 
