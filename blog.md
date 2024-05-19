@@ -1,4 +1,4 @@
-# [2024-05-19] 🐽 Bacon - Lsp in Rust 🦀
+# [2024-05-19] 🦀 Bacon - Lsp in Rust 
 
 TBD.. almost..
 # [2024-05-18] 🌎 Uploading blog programmatically
@@ -43,12 +43,20 @@ Easy!
 
 [![script result](https://raw.githubusercontent.com/crisidev/blog/main/2024-05-18/script-result.png)]()
 
+## Auto publish anyone? 🤩
+
+The blog is a self-contained [Github repo](https://github.com/crisidev/blog) and is published
+to [lmno.lol/crisidev](https://lmno.lol/crisidev) using a 
+[Github action](https://github.com/crisidev/blog/blob/main/.github/workflows/publish.yml)
+based on the learnings above so that every time I update it the repository and push on `main`, 
+the CI kicks in and a new version is published automatically 🚀
+
 ## The code
 Here is the full script, which is shared also as a [gist](https://gist.github.com/crisidev/658906ccd133ddb0083258771ffe17e9).
 
 [![lmno blog upload script](https://raw.githubusercontent.com/crisidev/blog/main/2024-05-18/script.png)](https://gist.github.com/crisidev/658906ccd133ddb0083258771ffe17e9)
 
-# [2024-05-17] 🐽 Bacon Language Server 🐽
+# [2024-05-17] 🐽 Bacon Language Server
 If you, like, me, spend a lot of my development time doing Rust 🦀 inside Neovim and is not 
 satisfied by [rust-analyzer](https://rust-analyzer.github.io/) performance with medium to 
 large sized repositories, you are in the right place 🤩.
@@ -60,7 +68,7 @@ are developing, runs the target command (build, test, clippy, etc..) when there 
 and reports the diagnostics in a structured view in the `bacon` TUI. This little tool is also 
 able to keep the `cargo` diagnostics up to date in a file and in a format we can parse.
 
-## 🐽 bacon-ls 🐽
+## 🐽 bacon-ls
 
 [bacon-ls](https://github.com/crisidev/bacon-ls) is the companion to Bacon, reading the diagnostics 
 from the Bacon export file and exposing them via the Language Server Protocol over standard input.
@@ -131,7 +139,7 @@ a new post about it!
 `bacon-ls` is open source and can be found on [Github](https://github.com/crisidev/bacon-ls).
 
 
-# [2024-05-09] LunarVim -> LazyVim
+# [2024-05-09] 🚀 LunarVim -> LazyVim
 
 I use [Neovim](https://neovim.io/) as my IDE for a long time, mainly for Rust, Python, C, Go, Lua and the usual markup languages and configuration management such has YAML, JSON, Toml and Mardown.
 
