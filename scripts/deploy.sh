@@ -76,6 +76,7 @@ curl -s -b "$argc_cookie_file" -c "$argc_cookie_file" \
     -w '%{method} %{http_code} %{url_effective}  time: %{time_total}s, down: %{size_download}b, up: %{size_upload}b\n' \
     -d "email=$argc_email&password=$LMNO_LOL_API_KEY" \
     "$argc_url/signin?goto=/$argc_blog"
+
 if [ $? -eq 0 ]; then
     echo "Cookie successfully stored to file $argc_cookie_file"
 else
