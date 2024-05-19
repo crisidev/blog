@@ -5,8 +5,8 @@
 argc_email="bigo@crisidev.org"
 argc_blog="crisidev"
 argc_url="https://lmno.lol"
-argc_cookie_file="/tmp/lmno.lol.$argc_blog.cookie"
-argc_blog_file="$HOME/github/blog/blog.md"
+argc_cookie_file="$(pwd)/lmno.lol.$argc_blog.cookie"
+argc_blog_file="$(pwd)/blog.md"
 
 # Parse command line arguments
 while [[ $# -gt 0 ]]; do
