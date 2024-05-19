@@ -8,14 +8,16 @@
 
 # blog-about
 
-Hello there 👋, I'm [@crisidev](/crisidev).
+Hello there 👋, I'm [@crisidev](/crisidev). 
 
 I serialize thoughts and ideas into ELF binaries, mainly in 🦀.
 
-I can be found online here
+[![crisidev](https://raw.githubusercontent.com/crisidev/blog/main/posts/photo.jpg)](https://lmno.lol/crisidev)
+
+### Links
 
 - Github - [@crisidev](https://github,com/crisidev)
 - Mastodon - [@crisidev](https://hachyderm.io/@crisidev)
 - LinkedIn - [matteobigoi](https://www.linkedin.com/in/matteobigoi/)
-- Email - bigo _at_ crisidev _dot_ org
+- Email - bigo **at** crisidev **dot** org
 
