@@ -12,7 +12,7 @@ Hello there 👋, I'm [@crisidev](/crisidev).
 
 I serialize thoughts and ideas into ELF binaries, mainly in 🦀.
 
-[![crisidev](https://raw.githubusercontent.com/crisidev/blog/main/posts/photo.jpg)](https://lmno.lol/crisidev)
+[![crisidev](https://raw.githubusercontent.com/crisidev/blog/main/posts/photo.png)](https://lmno.lol/crisidev)
 
 ### Links
 
