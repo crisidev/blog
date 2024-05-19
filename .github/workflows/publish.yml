@@ -12,5 +12,6 @@ jobs:
       - uses: actions/checkout@v4
       - name: Publish blog
         env:
+          LMNO_LOL_API_EMAIL: ${{ secrets.LMNO_LOL_API_EMAIL }}
           LMNO_LOL_API_KEY: ${{ secrets.LMNO_LOL_API_KEY }}
-        run: ./scripts/deploy.sh
+        run: ./scripts/publish.sh

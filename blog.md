@@ -1,6 +1,3 @@
-# [2024-05-19] 🦀 Bacon - Lsp in Rust 
-
-TBD.. almost..
 # [2024-05-18] 🌎 Uploading blog programmatically
 
 I am a lazy person spending most of their time in a terminal 💻...
@@ -16,7 +13,7 @@ system. The first thing to do is to login with the username and password.
 Luckily the login screen is a form I can submit with curl with roughly this
 command:
 
-[![login curl](https://raw.githubusercontent.com/crisidev/blog/main/2024-05-18/login-curl.png)]()
+[![login curl](https://raw.githubusercontent.com/crisidev/blog/main/posts/2024-05-18/login-curl.png)](https://raw.githubusercontent.com/crisidev/blog/main/posts/2024-05-18/login-curl.png)
 
 After storing the cookie session key, we can now move to the next step, which
 is uploading a new version of [lmno.lol/crisidev](https://lmno.lol/crisidev)! 
@@ -28,7 +25,7 @@ that is responsible to update my blog.
 
 I click on the request and 🔥
 
-[![copy as curl](https://raw.githubusercontent.com/crisidev/blog/main/2024-05-18/copy-as-curl.png)]()
+[![copy as curl](https://raw.githubusercontent.com/crisidev/blog/main/posts/2024-05-18/copy-as-curl.png)](https://raw.githubusercontent.com/crisidev/blog/main/posts/2024-05-18/copy-as-curl.png)
 
 I am crying of joy.
 
@@ -36,12 +33,12 @@ I am crying of joy.
 
 Mozilla produces a working `curl` command that I had to tweak a little to basically this:
 
-[![api curl](https://raw.githubusercontent.com/crisidev/blog/main/2024-05-18/api-curl.png)]()
+[![api curl](https://raw.githubusercontent.com/crisidev/blog/main/posts/2024-05-18/api-curl.png)](https://raw.githubusercontent.com/crisidev/blog/main/posts/2024-05-18/api-curl.png)
 
 Easy! 
 ## The result
 
-[![script result](https://raw.githubusercontent.com/crisidev/blog/main/2024-05-18/script-result.png)]()
+[![script result](https://raw.githubusercontent.com/crisidev/blog/main/posts/2024-05-18/script-result.png)](https://raw.githubusercontent.com/crisidev/blog/main/posts/2024-05-18/script-result.png)
 
 ## Auto publish anyone? 🤩
 
@@ -54,7 +51,7 @@ the CI kicks in and a new version is published automatically 🚀
 ## The code
 Here is the full script, which is shared also as a [gist](https://gist.github.com/crisidev/658906ccd133ddb0083258771ffe17e9).
 
-[![lmno blog upload script](https://raw.githubusercontent.com/crisidev/blog/main/2024-05-18/script.png)](https://gist.github.com/crisidev/658906ccd133ddb0083258771ffe17e9)
+[![lmno blog upload script](https://raw.githubusercontent.com/crisidev/blog/main/posts/2024-05-18/script.png)](https://gist.github.com/crisidev/658906ccd133ddb0083258771ffe17e9)
 
 # [2024-05-17] 🐽 Bacon Language Server
 If you, like, me, spend a lot of my development time doing Rust 🦀 inside Neovim and is not 
@@ -121,7 +118,7 @@ And now you are ready to go!
 
 Neovim should look like this:
 
-[![neovim bacon img](https://raw.githubusercontent.com/crisidev/blog/main/2024-05-17/screenshot.png)]()
+[![neovim bacon img](https://raw.githubusercontent.com/crisidev/blog/main/posts/2024-05-17/screenshot.png)](https://raw.githubusercontent.com/crisidev/blog/main/posts/2024-05-17/screenshot.png)
 
 If you like the look and feel, you can check my Neovim [configurations](https://github.com/crisidev/lazyvim) 
 and this [blog post](https://lmno.lol/crisidev/lunarvim-lazyvim) 😀.
@@ -131,17 +128,27 @@ and this [blog post](https://lmno.lol/crisidev/lunarvim-lazyvim) 😀.
 With a properly configured client, the experience is pretty snappy. I keep `nvim-lspconfig`
 setting `update_in_insert = true` for very smooth diagnostic icons transitions.
 
-[![neovim bacon gif](https://raw.githubusercontent.com/crisidev/blog/main/2024-05-17/bacon-ls.gif)]()
+[![neovim bacon gif](https://raw.githubusercontent.com/crisidev/blog/main/posts/2024-05-17/bacon-ls.gif)](https://raw.githubusercontent.com/crisidev/blog/main/posts/2024-05-17/bacon-ls.gif)
 
 If you are interested in how the LSP server is designed and implemented, I'll shortly release 
 a new post about it!
 
 `bacon-ls` is open source and can be found on [Github](https://github.com/crisidev/bacon-ls).
 
-
 # [2024-05-09] 🚀 LunarVim -> LazyVim
 
 I use [Neovim](https://neovim.io/) as my IDE for a long time, mainly for Rust, Python, C, Go, Lua and the usual markup languages and configuration management such has YAML, JSON, Toml and Mardown.
+
+Here is a loud Neovim logo to cheer you up on a rainy day 🌧️
+
+                                             
+      ████ ██████           █████      ██
+     ███████████             █████ 
+     █████████ ███████████████████ ███   ███████████
+    █████████  ███    █████████████ █████ ██████████████
+   █████████ ██████████ █████████ █████ █████ ████ █████
+ ███████████ ███    ███ █████████ █████ █████ ████ █████
+██████  █████████████████████ ████ █████ █████ ████ ██████
 
 I all started by porting my incredibly old (10+ years) and complicated Vim configuration to Neovim, all implemented in vimscript. IT WAS A NIGHTMARE 🔥..
 
@@ -187,7 +194,7 @@ On top of this, it's less code to maintain 🤩. It's still a lot, but what the 
 
 And the look and feel is GREAT!
 
-[![rust](https://raw.githubusercontent.com/crisidev/blog/main/2024-05-09/rust.png)](https://github.com/crisidev/lazyvim)
+[![rust](https://raw.githubusercontent.com/crisidev/blog/main/posts/2024-05-09/rust.png)](https://raw.githubusercontent.com/crisidev/blog/main/posts/2024-05-09/rust.png)
 
 All the my configuration is open source and you can take what you need from it on [Github](https://github.com/crisidev/lazyvim)!
 
@@ -198,7 +205,6 @@ All the my configuration is open source and you can take what you need from it o
 ██      ██████  ██ ███████ ██ ██   ██ █████   ██    ██ 
 ██      ██   ██ ██      ██ ██ ██   ██ ██       ██  ██  
  ██████ ██   ██ ██ ███████ ██ ██████  ███████   ████  
-
 
 # blog-about
 
@@ -212,3 +218,4 @@ I can be found online here
 - Mastodon - [@crisidev](https://hachyderm.io/@crisidev)
 - LinkedIn - [matteobigoi](https://www.linkedin.com/in/matteobigoi/)
 - Email - bigo _at_ crisidev _dot_ org
+
