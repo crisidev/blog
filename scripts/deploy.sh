@@ -7,6 +7,7 @@ argc_blog="crisidev"
 argc_url="https://lmno.lol"
 argc_cookie_file="$(pwd)/lmno.lol.$argc_blog.cookie"
 argc_blog_file="$(pwd)/blog.md"
+argc_password=""
 
 # Parse command line arguments
 while [[ $# -gt 0 ]]; do
@@ -31,8 +32,12 @@ while [[ $# -gt 0 ]]; do
         argc_blog_file="$2"
         shift 2
         ;;
+    -p | --password)
+        argc_password="$2"
+        shift 2
+        ;;
     -h | --help)
-        echo "USAGE: $0 [OPTIONS]"
+        echo "USAGE: $0 [OPTIONS] -p password"
         echo
         echo "OPTIONS:"
         echo "  -e, --email <EMAIL>              [default: $argc_email]"
@@ -74,9 +79,8 @@ echo "Logging into blog $argc_url/$argc_blog and store cookies into $argc_cookie
 curl -s -b "$argc_cookie_file" -c "$argc_cookie_file" \
     -H "Content-Type: application/x-www-form-urlencoded" \
     -w '%{method} %{http_code} %{url_effective}  time: %{time_total}s, down: %{size_download}b, up: %{size_upload}b\n' \
-    -d "email=$argc_email&password=$LMNO_LOL_API_KEY" \
+    -d "email=$argc_email&password=$argc_password" \
     "$argc_url/signin?goto=/$argc_blog"
-
 if [ $? -eq 0 ]; then
     echo "Cookie successfully stored to file $argc_cookie_file"
 else
