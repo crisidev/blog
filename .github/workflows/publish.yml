@@ -10,5 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Publish blog
+        env:
+          LMNO_LOL_API_KEY: ${{ secrets.LMNO_LOL_API_KEY }}
         run: |
-          ${PWD}/scripts/deploy.sh -p ${secrets.LMNO_LOL_API_KEY}
+          ${PWD}/scripts/deploy.sh
