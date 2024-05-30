@@ -1,4 +1,4 @@
-# [2024-05-20] 🐽 `bacon-ls` - LSP in Rust
+# [2024-05-20] 🐽 bacon-ls - LSP in Rust
 What is the experience of building a Language Server in Rust 🦀 you ask?
 Without any prior knowledge of the protocol?
 
