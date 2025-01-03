@@ -72,9 +72,15 @@ cleanup() {
     rm -rf "$argc_cookie_file" "$argc_blog_file"
 }
 
-echo "publishing blog $argc_url/$argc_blog for user $argc_email using local file $argc_blog_file"
 cleanup
-build_blog
-login
-update_blog
+
+if [ "$1" = "rebuild" ]; then
+    echo "rebuilding blog $argc_url/$argc_blog for user $argc_email on local file $argc_blog_file"
+    build_blog
+else
+    echo "publishing blog $argc_url/$argc_blog for user $argc_email using local file $argc_blog_file"
+    build_blog
+    login
+    update_blog
+fi
 exit 0

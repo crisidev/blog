@@ -1,3 +1,112 @@
+# [2025-01-03] 🐽 bacon-ls - a lot of new features
+It's been a while since I have written here and I am happy to announce a lot of new nice features that I baked in `bacon-ls`.
+
+There features are available with [version 0.8.0](https://crates.io/crates/bacon-ls) of `bacon-ls` and requires `bacon` at
+least at [version 3.7.0](https://crates.io/crates/bacon). This new version of `bacon` adds some amazing support at parsing
+the JSON that can be produced by `cargo` when running with the option `--message-format json-diagnostic-rendered-ansi`.
+
+Directly parsing this format allows for very precise span locations and direct access to `cargo` and `clippy` suggestions.
+
+## New features 
+
+* **Precise diagnostics positions**: since spans are precisely gathered from `cargo`, now the diagnostics locations are 
+  only applied to right portion of text.
+* **Code actions**: Replacement and quick fix code actions are now exposed by `bacon-ls` to the LSP client, allowing
+  for refactoring similar to the one available on `rust-analyzer`.
+* **VsCode extensions**: extensions for [Visual Studio Code](https://code.visualstudio.com/) and derivatives are
+  now published on the [VSCode Marketplace](https://marketplace.visualstudio.com/items?itemName=MatteoBigoi.bacon-ls-vscode)
+  and on the [Open VSX Registry](https://open-vsx.org/extension/MatteoBigoi/bacon-ls-vscode)
+
+**Please take a moment to read `bacon-ls` [README](https://github.com/crisidev/bacon-ls/blob/main/README.md) as the `bacon`
+location configuration has changed and must be updated to work properly.**
+
+Happy diagnostics 🦀!
+
+# [2024-05-20] 🐽 bacon-ls - LSP in Rust
+What is the experience of building a Language Server in Rust 🦀 you ask?
+Without any prior knowledge of the protocol?
+
+Well, it not bad.. It requires basic familiarity with the [tokio](https://docs.rs/crate/tokio/) 
+asynchronous ecosystem and with Rust async in general, but you can get 
+something done in a couple of days of work.
+
+`bacon-ls` depends on [tower-lsp](https://docs.rs/crate/tower-lsp/) for the 
+STDIN/STDOUT/HTTP communication and on [tokio](https://docs.rs/crate/tokio/)
+for the asynchronous runtime and the foundational LSP types are provided by
+[lsp-types](https://docs.rs/crate/lsp-types).
+
+[Bacon](https://dystroy.org/bacon/) writes a file with a diagnostic per line
+and `bacon-ls` requires a specific format that can be parsed:
+
+```bash
+line_format = "{kind}:{path}:{line}:{column}:{message}{context}"
+```
+
+Since [Bacon](https://dystroy.org/bacon/) supports (from [#5d95852](https://github.com/Canop/bacon/commit/5d958528a19cb3ec3b8129df7f0364bb0716932c)) 
+the message `{context}`, any other line captured in relation to the current 
+diagnostic, `bacon-ls` can emit the whole diagnostic, including hints from
+clippy and cargo.
+
+## Diagnostics and Language Servers
+Language clients can request [textDocument/diagnostic](https://microsoft.github.io/language-server-protocol/specification#textDocument_diagnostic) and [workspace/diagnostic](https://microsoft.github.io/language-server-protocol/specification#workspace_diagnostic) capabilities, expecting the list of diagnostics for the current
+file or for the whole workspace. The diagnostic carries metadata, such has
+the `line:column` of the diagnostic, URL, message and so on..
+
+I think you see where this is going..
+
+`bacon-ls` reads [Bacon](https://dystroy.org/bacon/) diagnostics and exposes
+them on the LSP interface to clients requesting it 🚀!
+
+## Some some Rust please
+
+`tower-lsp` is implemented more or less how you would expect it. It exports a 
+[LanguageServer](https://docs.rs/tower-lsp/latest/tower_lsp/trait.LanguageServer.html)
+trait the user can implement to expose the capabilities for their use-case.
+
+For `bacon-ls`, we only need to implement 3 methods:
+
+- Initialize the LSP server
+- Implement [textDocument/diagnostic](https://microsoft.github.io/language-server-protocol/specification#textDocument_diagnostic)
+- Implement [workspace/diagnostic](https://microsoft.github.io/language-server-protocol/specification#workspace_diagnostic)
+### Initialize the LSP server
+
+The LSP server must be initialized so that it can returns the list of available
+capabilities to clients.
+
+[![initialize](https://raw.githubusercontent.com/crisidev/blog/main/posts/2024-05-20/initialize.png)](https://raw.githubusercontent.com/crisidev/blog/main/posts/2024-05-20/initialize.png)
+
+### Fetch diagnostic from Bacon
+
+All the rest of the LSP server implementation is using this function to fetch them
+diagnostics from Bacon. 
+
+[![bacon-diagnostic](https://raw.githubusercontent.com/crisidev/blog/main/posts/2024-05-20/bacon-diagnostic.png)](https://raw.githubusercontent.com/crisidev/blog/main/posts/2024-05-20/bacon-diagnostic.png)
+
+### Implement textDocument/diagnostic
+
+This method is what is being called by the LSP client when it wants to retrieve the current
+document diagnostic.
+
+[![document-diagnostic](https://raw.githubusercontent.com/crisidev/blog/main/posts/2024-05-20/document-diagnostic.png)](https://raw.githubusercontent.com/crisidev/blog/main/posts/2024-05-20/document-diagnostic.png)
+
+### Implement workspace/diagnostic
+
+
+This method is what is being called by the LSP client when it wants to retrieve the whole
+workspace diagnostic.
+
+[![workspace-diagnostic](https://raw.githubusercontent.com/crisidev/blog/main/posts/2024-05-20/workspace-diagnostic.png)](https://raw.githubusercontent.com/crisidev/blog/main/posts/2024-05-20/workspace-diagnostic.png)
+
+### Tower service
+
+The LSP server is implemented as a [Tower](https://docs.rs/tower/latest/tower/) service and only requires a structure implementing the [LanguageServer](https://docs.rs/tower-lsp/latest/tower_lsp/trait.LanguageServer.html). Tower will take care of the LSP server process lifecycle, clients handling and so on.
+
+
+[![tower-service](https://raw.githubusercontent.com/crisidev/blog/main/posts/2024-05-20/tower-service.png)](https://raw.githubusercontent.com/crisidev/blog/main/posts/2024-05-20/tower-service.png)
+
+## Done 🚀
+
+I was not expecting this do be so easy and well integrated with Rust!
 # [2024-05-18] 🌎 Uploading blog programmatically
 
 I am a lazy person spending most of their time in a terminal 💻...
@@ -139,17 +248,6 @@ a new post about it!
 
 I use [Neovim](https://neovim.io/) as my IDE for a long time, mainly for Rust, Python, C, Go, Lua and the usual markup languages and configuration management such has YAML, JSON, Toml and Mardown.
 
-Here is a loud Neovim logo to cheer you up on a rainy day 🌧️
-
-                                             
-      ████ ██████           █████      ██
-     ███████████             █████ 
-     █████████ ███████████████████ ███   ███████████
-    █████████  ███    █████████████ █████ ██████████████
-   █████████ ██████████ █████████ █████ █████ ████ █████
- ███████████ ███    ███ █████████ █████ █████ ████ █████
-██████  █████████████████████ ████ █████ █████ ████ ██████
-
 I all started by porting my incredibly old (10+ years) and complicated Vim configuration to Neovim, all implemented in vimscript. IT WAS A NIGHTMARE 🔥..
 
 Later on I discovered you can configure Neovim using Lua and I fell in love with it.
@@ -192,7 +290,13 @@ On top of this, it's less code to maintain 🤩. It's still a lot, but what the 
 ===============================================================================
 ```
 
-And the look and feel is GREAT!
+**The look and feel is GREAT!**
+
+[Alpha](), the startup / welcome dashboard with recent files, quick actions and sessions and a cool banner 🤩
+
+[![alpha](https://raw.githubusercontent.com/crisidev/blog/main/posts/2024-05-09/alpha.png)](https://raw.githubusercontent.com/crisidev/blog/main/posts/2024-05-09/alpha.png)
+
+Developing in Rust with files and tests panels and LSP completion
 
 [![rust](https://raw.githubusercontent.com/crisidev/blog/main/posts/2024-05-09/rust.png)](https://raw.githubusercontent.com/crisidev/blog/main/posts/2024-05-09/rust.png)
 
@@ -208,14 +312,15 @@ All the my configuration is open source and you can take what you need from it o
 
 # blog-about
 
-Hello there 👋, I'm [@crisidev](/crisidev).
+Hello there 👋, I'm [@crisidev](/crisidev). 
+
+[![crisidev](https://raw.githubusercontent.com/crisidev/blog/main/posts/photo.png)](https://lmno.lol/crisidev)
 
 I serialize thoughts and ideas into ELF binaries, mainly in 🦀.
+### Links
 
-I can be found online here
-
-- Github - [@crisidev](https://github,com/crisidev)
-- Mastodon - [@crisidev](https://hachyderm.io/@crisidev)
-- LinkedIn - [matteobigoi](https://www.linkedin.com/in/matteobigoi/)
-- Email - bigo _at_ crisidev _dot_ org
+- 💻 Github - [@crisidev](https://github,com/crisidev)
+- 🌎 Mastodon - [@crisidev](https://hachyderm.io/@crisidev)
+- 💁 LinkedIn - [matteobigoi](https://www.linkedin.com/in/matteobigoi/)
+- 📧 Email - bigo **at** crisidev **dot** org
 
