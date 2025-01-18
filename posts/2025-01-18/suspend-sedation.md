@@ -47,7 +47,7 @@ threshold and, if it is, cleanly shuts down your laptop, preventing the nasty co
 
 **I know, it's sad, but man, when the world gives you lemon, you do something, right 🍋?**
 
-```systemd
+```bash
 ❯❯❯ cat /etc/systemd/system/suspend-sedation.service
 [Unit]
 Description=Wake up periodically and check battery status
