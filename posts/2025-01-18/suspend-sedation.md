@@ -1,7 +1,6 @@
-# Suspend Sedation on Linux
+# 💻 Suspend Sedation on Linux
 
-| :exclamation:  This post starts as a rant, but ends with some hope.. Bear with me :)   |
-|----------------------------------------------------------------------------------------|
+**This post starts as a rant, but ends with some hope.. Bear with me 😀.**
 
 I remember the good old days, in 2004 (or maybe 2025?).. My laptop was an iBook G4 running Debian GNU/Linux
 and I could put that thing in suspend to RAM and it would last around a month.
