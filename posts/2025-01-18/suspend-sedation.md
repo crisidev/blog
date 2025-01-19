@@ -1,4 +1,4 @@
-# 💻 Suspend Sedation on Linux
+# [2025-01-18] 💻 Suspend Sedation on Linux
 
 **This post starts as a rant, but ends with some hope.. Bear with me 😀.**
 
