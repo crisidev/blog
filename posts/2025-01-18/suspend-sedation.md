@@ -33,7 +33,7 @@ yadda, yadda, yadda.
 
 ## Suspend sedation to the rescue
 
-The Debian wiki has a nice article about a technique called *suspend sedation*: https://wiki.debian.org/SystemdSuspendSedation.
+The Debian wiki has a nice article about a technique called *suspend sedation*: [https://wiki.debian.org/SystemdSuspendSedation](https://wiki.debian.org/SystemdSuspendSedation).
 
 The gist is that we can use a watchdog timer to wake up the laptop from s2idle and do something to mitigate this shit show.
 
